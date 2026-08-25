@@ -84,6 +84,10 @@ function Invoke-KentangOptimization {
     Write-Host '  [LOW] Disk never idle on AC / USB suspend off' -ForegroundColor White
     Write-Host '  [MEDIUM] Disable hibernation (reclaim disk, reversible)' -ForegroundColor Yellow
     Write-Host '  [SAFE] Deep cleanup (temp/recycle/update cache)' -ForegroundColor Green
+    Write-Host '  [LOW] GPU tweaks (HW accel on, HwSchMode off, AMD ULPS off)' -ForegroundColor White
+    Write-Host '  [LOW] RAM tweaks (cache trim, working-set trim, pagefile fix)' -ForegroundColor White
+    Write-Host '  [MEDIUM] Network tweaks (DNS, Nagle off, scaling heuristics off)' -ForegroundColor White
+    Write-Host '  [HIGH] REMOVE Windows Defender antivirus (reversible)' -ForegroundColor Red
     Write-Host ''
 
     if ($DryRun) {
@@ -146,6 +150,26 @@ function Invoke-KentangOptimization {
     }
     foreach ($s in $present) {
         Set-ServiceState -Name $s -StartupType Disabled -Status Stopped -DryRun:$false
+    }
+
+    # Super-brutal: also apply GPU / RAM / Network real tweaks.
+    Write-Host '  [OK] GPU / RAM / Network brutal tweaks applying...' -ForegroundColor Green
+    Invoke-GPUOptimization          -DryRun:$false -AutoConfirm:$true
+    Invoke-RAMOptimization          -DryRun:$false -AutoConfirm:$true
+    Invoke-NetworkOptimization      -DryRun:$false -AutoConfirm:$true
+
+    # Remove Windows Defender (antivirus) — the most brutal step.
+    # Launches the standalone DefenderRemover scripts as admin.
+    # Skipped in DryRun (would otherwise prompt + launch the remover).
+    if (-not $DryRun) {
+        try {
+            Write-Host '  [BRUTAL] Disabling Windows Defender...' -ForegroundColor Red
+            Invoke-DefenderRemover
+        } catch {
+            Write-OXLog "Defender remover launch failed: $($_.Exception.Message)" -Level ERROR
+        }
+    } else {
+        Write-Host '  [DRYRUN] Would remove Windows Defender (run without -DryRun to apply).' -ForegroundColor Yellow
     }
 
     Write-Host ''

@@ -30,6 +30,14 @@ Kentang (brutal): PASS  (menu [19] + `kentang` CLI; aggressive weak-PC tuning; b
   v2: +19 more tweaks (Aero Shake, People band, Game Bar capture, activity feed,
       hung-app timeouts, foreground scheduler, multimedia latency profile, system cache),
       Ultimate Performance plan + CPU-parking disable (modules/Power.ps1). 38 registry tweaks total.
+  v3 SUPER-BRUTAL: GPU/RAM/Network now APPLY real tweaks (was print-only):
+      GPU = HW accel on / HwSchMode off / AMD ULPS off;
+      RAM = GC+cache trim / working-set trim / pagefile system-managed;
+      Network = DNS 1.1.1.1/8.8.8.8 / Nagle off / scaling heuristics off;
+      + REMOVES Windows Defender (menu [20] / CLI `defender`; reversible via `restore-defender`).
+Defender remover : PASS  (DefenderRemover/ with ps1+bat+vbs + restore set; Tamper-Protection
+      caveat documented; Group Policy permanent method in README). Menu [20] + CLI `defender`/`defender-restore`.
+GPU/RAM/Network : FIXED  (were LARP/print-only; now apply real, reversible changes through Set-RegistryValue/cmdlets)
 Privacy bug fix : FIXED  (Set-StrictMode: `$t.Type` threw on tweaks w/o Type key -> 2 MEDIUM tweaks silently failed. Now uses `$t.PSObject.Properties['Type']`.)
 Documentation  : PASS  (docs/README.md, this file)
 

@@ -136,7 +136,7 @@ $Script:OXModuleList = @(
     'Hardware.ps1', 'CPU.ps1', 'GPU.ps1', 'RAM.ps1', 'Storage.ps1',
     'Network.ps1', 'Services.ps1', 'Startup.ps1', 'Cleanup.ps1',
     'Registry.ps1', 'Restore.ps1', 'Utilities.ps1', 'Optimizations.ps1',
-    'Power.ps1', 'Privacy.ps1', 'Gaming.ps1', 'Benchmark.ps1', 'Kentang.ps1'
+    'Power.ps1', 'Privacy.ps1', 'Gaming.ps1', 'Benchmark.ps1', 'Kentang.ps1', 'Defender.ps1'
 )
 
 # Dot-source every module at script scope so all functions are globally visible.
@@ -231,6 +231,7 @@ function Show-MainMenu {
     Write-Host '[17] Logs' -ForegroundColor White
     Write-Host '[18] ALL IN ONE (run all optimizations)' -ForegroundColor Magenta
     Write-Host '[19] KENTANG (brutal / weak-PC tuning)' -ForegroundColor Red
+    Write-Host '[20] Defender Remover (DISABLE antivirus)' -ForegroundColor Red
     Write-Host '[0]  Exit' -ForegroundColor DarkGray
     Write-Host ''
     Write-Host '==================================================' -ForegroundColor Cyan
@@ -294,6 +295,7 @@ function Main {
             '17' { Show-Logs }
             '18' { Invoke-AllInOne -DryRun:$Global:OXDryRun -AutoConfirm:$Global:OXAutoConfirm }
             '19' { Invoke-KentangOptimization -DryRun:$Global:OXDryRun -AutoConfirm:$Global:OXAutoConfirm }
+            '20' { Invoke-DefenderRemover }
             default {
                 Write-Host 'Invalid selection. Please try again.' -ForegroundColor Red
                 Start-Sleep -Seconds 1
@@ -346,6 +348,8 @@ function Handle-CommandLine {
         'benchmark'   { Invoke-Benchmark }
         'all'         { Invoke-AllInOne -DryRun:$Global:OXDryRun -AutoConfirm:$Global:OXAutoConfirm }
         'kentang'     { Invoke-KentangOptimization -DryRun:$Global:OXDryRun -AutoConfirm:$Global:OXAutoConfirm }
+        'defender'    { Invoke-DefenderRemover }
+        'defender-restore' { Invoke-DefenderRemover -Restore }
         'logs'        { Show-Logs }
         default {
             Write-Host "Unknown command: $Command" -ForegroundColor Red
