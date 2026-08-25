@@ -40,7 +40,6 @@ $Script:ConfigPath     = Join-Path $Script:ScriptRoot 'config'
 $Script:BackupPath     = Join-Path $Script:ScriptRoot 'backups'
 $Script:LogPath        = Join-Path $Script:ScriptRoot 'logs'
 $Script:ReportPath     = Join-Path $Script:ScriptRoot 'reports'
-$Script:PresetPath     = Join-Path $Script:ScriptRoot 'presets'
 
 # Global state
 $Global:OXConfig        = $null
