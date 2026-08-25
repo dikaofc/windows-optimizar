@@ -1,0 +1,15 @@
+# Machine-specific / generated artifacts — not portable, not for public repo
+backups/
+logs/
+reports/
+*.reg
+
+# OS cruft
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Temp helpers
+chk.ps1
+dbg*.ps1
+verify.ps1

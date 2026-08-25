@@ -1,0 +1,17 @@
+{
+    "id": "LAPTOP",
+    "name": "Laptop Optimization",
+    "description": "Laptop-specific optimization profile",
+    "risk_level": "MEDIUM",
+    "optimizations": [
+        "OX-CLEAN-001",
+        "OX-POWER-001",
+        "OX-STARTUP-001"
+    ],
+    "notes": [
+        "Optimized for laptop hardware",
+        "Preserves battery life",
+        "Avoids excessive power consumption",
+        "Thermal-aware optimizations"
+    ]
+}

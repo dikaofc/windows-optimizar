@@ -1,0 +1,16 @@
+{
+    "id": "BALANCED",
+    "name": "Balanced Optimization",
+    "description": "Balanced optimization for performance and battery life",
+    "risk_level": "MEDIUM",
+    "optimizations": [
+        "OX-CLEAN-001",
+        "OX-POWER-001",
+        "OX-STARTUP-001"
+    ],
+    "notes": [
+        "Balance between performance and battery",
+        "Suitable for laptops and desktops",
+        "Moderate performance improvement"
+    ]
+}

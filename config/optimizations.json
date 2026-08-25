@@ -1,0 +1,84 @@
+{
+    "optimizations": [
+        {
+            "id": "OX-CLEAN-001",
+            "name": "Temporary File Cleanup",
+            "category": "Cleanup",
+            "description": "Cleans temporary files from user and system temp folders",
+            "risk": "SAFE",
+            "apply": "Invoke-Cleanup"
+        },
+        {
+            "id": "OX-CLEAN-002",
+            "name": "DNS Cache Flush",
+            "category": "Network",
+            "description": "Flushes DNS resolver cache",
+            "risk": "SAFE",
+            "apply": "Flush-DNSCache"
+        },
+        {
+            "id": "OX-CLEAN-003",
+            "name": "Recycle Bin Empty",
+            "category": "Cleanup",
+            "description": "Empties the Recycle Bin for all drives",
+            "risk": "SAFE",
+            "apply": "Clean-RecycleBin"
+        },
+        {
+            "id": "OX-POWER-001",
+            "name": "Power Plan Optimization",
+            "category": "Power",
+            "description": "Sets power plan to High Performance for maximum throughput",
+            "risk": "LOW",
+            "apply": "Set-PowerPlan"
+        },
+        {
+            "id": "OX-STARTUP-001",
+            "name": "Startup Program Review",
+            "category": "Startup",
+            "description": "Identifies and disables unnecessary startup programs",
+            "risk": "LOW",
+            "apply": "Show-StartupManager"
+        },
+        {
+            "id": "OX-SERVICE-001",
+            "name": "Service Optimization",
+            "category": "Services",
+            "description": "Disables non-essential services (telemetry, Xbox, legacy)",
+            "risk": "MEDIUM",
+            "apply": "Show-ServicesManager"
+        },
+        {
+            "id": "OX-GAME-001",
+            "name": "Game Mode Configuration",
+            "category": "Gaming",
+            "description": "Enables Windows Game Mode",
+            "risk": "LOW",
+            "apply": "Enable-GameMode"
+        },
+        {
+            "id": "OX-NET-001",
+            "name": "Network Optimization",
+            "category": "Network",
+            "description": "Flushes DNS and tunes TCP/IP parameters",
+            "risk": "MEDIUM",
+            "apply": "Invoke-NetworkOptimization"
+        },
+        {
+            "id": "OX-PRIV-001",
+            "name": "Privacy Optimization",
+            "category": "Privacy",
+            "description": "Disables telemetry and advertising tracking",
+            "risk": "MEDIUM",
+            "apply": "Invoke-PrivacyOptimization"
+        },
+        {
+            "id": "OX-STORE-001",
+            "name": "TRIM / Defrag",
+            "category": "Storage",
+            "description": "Runs TRIM on SSDs or defrag on HDDs",
+            "risk": "SAFE",
+            "apply": "Invoke-StorageOptimization"
+        }
+    ]
+}

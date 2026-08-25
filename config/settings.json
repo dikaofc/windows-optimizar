@@ -1,0 +1,42 @@
+{
+    "language": "en-US",
+    "logging": {
+        "enabled": true,
+        "level": "INFO",
+        "retention_days": 30,
+        "log_file": "logs/ox-optimizer.log"
+    },
+    "backup": {
+        "create_restore_point": true,
+        "registry_backup": true,
+        "configuration_backup": true,
+        "optimization_manifest": true,
+        "backup_location": "backups"
+    },
+    "confirmation": {
+        "require_confirmation": true,
+        "auto_confirm": false
+    },
+    "colors": {
+        "enabled": true,
+        "theme": "default"
+    },
+    "dry_run": false,
+    "auto_restore_point": true,
+    "safe_mode": {
+        "enabled": false,
+        "max_risk_level": "LOW"
+    },
+    "benchmark": {
+        "enabled": true,
+        "iterations": 3,
+        "save_reports": true
+    },
+    "network": {
+        "timeout_seconds": 5,
+        "test_endpoints": [
+            "8.8.8.8",
+            "1.1.1.1"
+        ]
+    }
+}

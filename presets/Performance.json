@@ -1,0 +1,19 @@
+{
+    "id": "PERFORMANCE",
+    "name": "Performance Optimization",
+    "description": "Maximum performance optimization profile",
+    "risk_level": "HIGH",
+    "optimizations": [
+        "OX-CLEAN-001",
+        "OX-POWER-001",
+        "OX-SERVICE-001",
+        "OX-NET-001",
+        "OX-PRIV-001"
+    ],
+    "notes": [
+        "Significant performance improvement potential",
+        "May increase power consumption",
+        "Disables some non-essential services",
+        "Requires backup before applying"
+    ]
+}
