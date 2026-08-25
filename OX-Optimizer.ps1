@@ -84,7 +84,11 @@ function Write-OXLog {
     if ($Result) { $entry += " Result: $Result" }
     $entry += " $Message"
 
-    $entry | Out-File -FilePath $Global:OXLogFile -Encoding UTF8 -Append
+    try {
+        $logDir = Split-Path -Parent $Global:OXLogFile
+        if (-not (Test-Path $logDir)) { New-Item -ItemType Directory -Path $logDir -Force | Out-Null }
+        $entry | Out-File -FilePath $Global:OXLogFile -Encoding UTF8 -Append
+    } catch {}
 
     if ($VerboseLog) { Write-Host $entry }
 }
